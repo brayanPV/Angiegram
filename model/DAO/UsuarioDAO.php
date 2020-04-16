@@ -2,7 +2,7 @@
 
 class UsuarioDAO{
    
-    function login($email, $pass){
+    public static function login($email, $pass){
         $exito = false;
         try{
             //$email=$UsuarioDTO->getEmail();
@@ -29,7 +29,7 @@ class UsuarioDAO{
         }catch(Exception $e){
             throw new Exception("Ocurrio un error".$e->getTraceAsString());
         }
-        return exito;
+        return $exito;
     }
     
 }

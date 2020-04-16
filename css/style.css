@@ -4,7 +4,7 @@
 }
 
 body {
-    background: url(../Imagenes/fondoLogin.jpg) no-repeat center center fixed;
+    background: url(../view/imagenes/fondoLogin.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 

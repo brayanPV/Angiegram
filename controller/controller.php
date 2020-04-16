@@ -8,11 +8,12 @@ class Controller{
     }
     
     public function loginController($email, $pass){
-        $email = $_REQUEST['email'];
+        echo 'Dani te amo';
+       /* $email = $_REQUEST['email'];
         $pass = $_REQUEST['pass'];
         
-        return $this->negocio->loginNecogio($email, $pass);
-        
+        return $this->negocio->loginNegocio($email, $pass);
+        */
     }
 }
 
