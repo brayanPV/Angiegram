@@ -34,17 +34,29 @@
 
                 </div>
                 <a href="./view/html/registro.html">REGISTRATE</a>
-                <form class="col-12" action="./controller/controller.php" method="post">
+                <form class="col-12" action="" method="post">
                     <div class="form-group" id="user-group">
-                        <input class="form-control" type="email" placeholder="Correo electronico" name="email"/>
+                        <input class="form-control" type="email" placeholder="Correo electronico" name="email" values="crangarita2@gmail.com"/>
                     </div>
-
+               
                     <div class="form-group" id="contraseña-group">
-                        <input class="form-control" type="password" placeholder="Contraseña" name="pass" />
+                        <input class="form-control" type="password" placeholder="Contraseña" name="pass" values="1234" />
                     </div>
 
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt"></i>       Entrar</button>
-                </form>
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+                   
+         </form>
+         <?php
+         if (isset($_POST["email"])){
+            require_once 'controller/Controller.php';
+            $email=$_POST["email"];
+            $pass=$_POST["pass"];
+            $send= new Controller();
+            $res= $send->loginController($email,$pass);
+            
+            echo $res;
+        }
+        ?>
                 <div class="col-12 forgot">
                     <a href="">Recordar Contraseña</a> <br><br>
 

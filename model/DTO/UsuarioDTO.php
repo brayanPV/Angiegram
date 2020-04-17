@@ -14,7 +14,7 @@ class UsuarioDTO{
     
     function __construct($usuario,$email,$nombre,$apellido, $pass,$fecharegistro,$fechanacimiento, $pais){
         $this->usuario = $usuario;
-        $this->email = $email:
+        $this->email = $email;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->pass = $pass;
