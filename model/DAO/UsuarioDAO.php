@@ -67,7 +67,7 @@ class UsuarioDAO{
             $consulta->bindParam(6,$fechaNacimiento,PDO::PARAM_STR);
             $consulta->execute();
             $exito = true;
-            echo $exito;   
+            //echo $exito;   
          }catch(Exception $e){
             throw new Exception("Ocurrio un error" . $e->getTraceAsString());
         }

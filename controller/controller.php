@@ -39,15 +39,17 @@ class Controller{
     include '../../model/Negocio.php';
     $negocio=new Negocio();
     $res=$negocio->registroNegocio($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento);
-    echo $res;
-    //var_dump $res;
-    if($res==1111 ){
-    header('localtion: ../../index.php');
+    //echo $res;
+    var_dump($res);
+    if($res== true){
+    echo "entró al if";
+    header('location: ../../index.php');
     }else{
+    echo "entra al else";
     header('location: registro.php');
     }
-    echo $res;
-    return $res;
+    //echo $res;
+    //return $res;
     }
 }
 
