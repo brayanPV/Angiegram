@@ -10,6 +10,11 @@ class Negocio{
         $res = $this->user->login($email, $pass);
         return $res;
     }
+    
+    public function registroNegocio($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento){
+        $res = $this->user->registro($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento);
+        return $res;
+    }
 
 }
 

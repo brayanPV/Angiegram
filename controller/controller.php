@@ -1,17 +1,29 @@
 <?php
-require_once ('model/Negocio.php');
+//require_once ('../model/Negocio.php');
 class Controller{
-    public $negocio;
+    //private $negocio;
     
-   public function __construct(){
-        $this->negocio=new Negocio();
+  public function __construct(){
+        //include_once('model/Negocio.php');
+        //$negocio=new Negocio();
+        //return $negocio;
+      //$this->negocio = new Negocio();
     }
+    
+  /*  public function crearNegocio(){
+        include('model/Negocio.php');
+        $negocio=new Negocio();
+        return $negocio;
+    }*/
      
     public function loginController($email, $pass){
-        var_dump($email, $pass);
+        //var_dump($email, $pass);
         //$email = $_REQUEST['email'];
         //$pass = $_REQUEST['pass'];
-        $res=$this->negocio->loginNegocio($email, $pass);
+        //$res=$this->negocio->loginNegocio($email, $pass);
+        include ('model/Negocio.php');
+        $negocio=new Negocio();
+        $res=$negocio->loginNegocio($email,$pass);
         if($res==1){
         header('location: view/html/politicas.html');
         }
@@ -21,6 +33,21 @@ class Controller{
         echo $res;
         return $res;
         
+    }
+    
+    public function registroController($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento){
+    include '../../model/Negocio.php';
+    $negocio=new Negocio();
+    $res=$negocio->registroNegocio($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento);
+    echo $res;
+    //var_dump $res;
+    if($res!=null){
+    header('localtion: ../../index.php');
+    }else{
+    header('location: registro.php');
+    }
+    echo $res;
+    return $res;
     }
 }
 

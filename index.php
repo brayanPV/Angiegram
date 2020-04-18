@@ -33,7 +33,7 @@
                     <p>¿No tienes cuenta? </p>
 
                 </div>
-                <a href="./view/html/registro.html">REGISTRATE</a>
+                <a href="./view/html/registro.php">REGISTRATE</a>
                 <form class="col-12" action="" method="post">
                     <div class="form-group" id="user-group">
                         <input class="form-control" type="email" placeholder="Correo electronico" name="email" values="crangarita2@gmail.com"/>
