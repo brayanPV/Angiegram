@@ -66,12 +66,12 @@
                     <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt"></i>       Ingresar</button>
                 </form>
                 <?php
-                if(isset($_POST["email"])){
+                if(isset($_POST["usuario"])){
                 require_once('../../controller/Controller.php');
                 $usuario=$_POST["usuario"];
-                $nombre=$_POST["email"];
-                $apellido=$_POST["nombre"];
-                $email=$_POST["apellido"];
+                $email=$_POST["email"];
+                $nombre=$_POST["nombre"];
+                $apellido=$_POST["apellido"];
                 $pass=$_POST["pass"];
                 $fechaNacimiento=$_POST["fechaNacimiento"];
                 $send = new Controller();

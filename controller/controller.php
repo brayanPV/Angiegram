@@ -41,7 +41,7 @@ class Controller{
     $res=$negocio->registroNegocio($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento);
     echo $res;
     //var_dump $res;
-    if($res!=null){
+    if($res==1111 ){
     header('localtion: ../../index.php');
     }else{
     header('location: registro.php');
