@@ -3,14 +3,16 @@
     src: url(../fuente/richardm.ttf);
 }
 
-.col-md-9 {
-    border: 1px solid black;
+.col-md-11 {
     margin: 0 auto;
 }
 
+
+/*
 .navbar {
     margin-left: 100px;
 }
+
 
 .navbar img {
     width: 50px;
@@ -23,9 +25,287 @@
     font-family: richardm;
     font-size: 30px;
 }
+*/
 
 #header {
     width: 100%;
     background-color: #F1F3F3;
-    border-radius: 20px 20px 20px 20px;
+    /*  border: 2px solid black;*/
+}
+
+#img {
+    width: 50px;
+    height: 50px;
+    margin-left: 60px;
+}
+
+header .izq {
+    width: 50%;
+    padding: 2%;
+    font-family: richardm;
+    font-size: 30px;
+}
+
+header .centro {
+    margin-top: 2%;
+    width: 50%;
+}
+
+.izq a {
+    color: black;
+    text-decoration: none;
+}
+
+#tpd {
+    margin: auto;
+    margin-top: 2em;
+    color: #A0A5A5;
+}
+
+.titulo h4,
+h5 {
+    display: inline;
+}
+
+#tdpd {
+    color: black;
+}
+
+
+/*ESTILOS DEL PERFIL*/
+
+
+/* Styles: */
+
+.icon {
+    position: relative;
+    cursor: pointer;
+    margin: auto;
+    color: black;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
+    text-align: center;
+    font-size: 2.75em;
+    font-weight: bold;
+    transition: 0.24s 0.2s;
+}
+
+.icon:hover {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.menu {
+    position: absolute;
+    top: -75px;
+    left: -75px;
+    border: 150px solid transparent;
+    cursor: default;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 1.4s 0.07s;
+    z-index: -5;
+}
+
+.spread {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    transform-origin: 100px 100px;
+    transition: all 0.5s 0.1s;
+}
+
+.icon:hover .menu {
+    transition: transform 0.4s 0.08s, z-index 0s 0.5s;
+    transform: scale(1);
+    z-index: 5;
+}
+
+.icon:hover .spread,
+.icon:hover .unit {
+    transition: all 0.5s;
+}
+
+.icon:hover .spread:nth-child(1) {
+    transition-delay: 0.02s;
+    transform: rotate(85deg);
+}
+
+.icon:hover .spread:nth-child(1) .unit {
+    transition-delay: 0.04s;
+    transform: rotate(635deg);
+}
+
+.icon:hover .spread:nth-child(2) {
+    transition-delay: 0.04s;
+    transform: rotate(125deg);
+}
+
+.icon:hover .spread:nth-child(2) .unit {
+    transition-delay: 0.08s;
+    transform: rotate(595deg);
+}
+
+.icon:hover .spread:nth-child(3) {
+    transition-delay: 0.06s;
+    transform: rotate(165deg);
+}
+
+.icon:hover .spread:nth-child(3) .unit {
+    transition-delay: 0.12s;
+    transform: rotate(555deg);
+}
+
+.icon:hover .spread:nth-child(4) {
+    transition-delay: 0.08s;
+    transform: rotate(205deg);
+}
+
+.icon:hover .spread:nth-child(4) .unit {
+    transition-delay: 0.16s;
+    transform: rotate(515deg);
+}
+
+.icon:hover .spread:nth-child(5) {
+    transition-delay: 0.1s;
+    transform: rotate(245deg);
+}
+
+.icon:hover .spread:nth-child(5) .unit {
+    transition-delay: 0.2s;
+    transform: rotate(475deg);
+}
+
+.icon:hover .spread:nth-child(6) {
+    transition-delay: 0.12s;
+    transform: rotate(285deg);
+}
+
+.icon:hover .spread:nth-child(6) .unit {
+    transition-delay: 0.24s;
+    transform: rotate(435deg);
+}
+
+.icon:hover .spread:nth-child(7) {
+    transition-delay: 0.14s;
+    transform: rotate(325deg);
+}
+
+.icon:hover .spread:nth-child(7) .unit {
+    transition-delay: 0.28s;
+    transform: rotate(395deg);
+}
+
+.icon:hover .spread:nth-child(8) {
+    transition-delay: 0.16s;
+    transform: rotate(365deg);
+}
+
+.icon:hover .spread:nth-child(8) .unit {
+    transition-delay: 0.32s;
+    transform: rotate(355deg);
+}
+
+.icon:hover .spread:nth-child(9) {
+    transition-delay: 0.18s;
+    transform: rotate(405deg);
+}
+
+.icon:hover .spread:nth-child(9) .unit {
+    transition-delay: 0.36s;
+    transform: rotate(315deg);
+}
+
+
+/* END .icon:hover */
+
+.unit {
+    position: absolute;
+    background: white;
+    font-size: 60%;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: black;
+    border-radius: 50%;
+    transition: 0.6s;
+}
+
+
+/* Just CodePen layout stuff: */
+
+body,
+a,
+ul,
+li {
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html,
+body {
+    height: 100%;
+    min-height: 300px;
+}
+
+body {
+    font-family: sans-serif;
+    background: radial-gradient(white, white);
+    transform: translate3d(0, 0, 0);
+}
+
+.icon {
+    top: 50%;
+    margin-top: -260px;
+    margin-left: 150px;
+}
+
+#imagen {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    margin-left: -75px;
+    border-radius: 50%;
+}
+
+.btn-group {
+    margin-left: 81%;
+}
+
+.btn-secondary {
+    background-color: #F1F3F3;
+    color: black;
+    border: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 170px;
+    padding-top: 380px;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.foto {
+    width: 100%;
+    height: auto;
+}
+
+@supports(object-fit: cover) {
+    .foto img {
+        display: flex;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-top: 2px;
+    }
 }
