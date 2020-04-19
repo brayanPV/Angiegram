@@ -25,21 +25,28 @@ class UsuarioDAO{
     }
     
     public function login($email, $pass){
-        $exito = false;
-        try{
-           
-            //include('model/conexion.php');
-            //$conexion = new Conexion();
-	        $q="SELECT * FROM usuario WHERE email ='$email' AND pass='$pass'";
-            //Una nueva conexion
-            $con = $this->conectar();
-            $res=$con->query($q);
-            $num = $res->num_rows;
-            if($num>0){
-                //
-                session_start();
-                $usuario=$item["usuario"];
-                $_SESSION['usuario'] = $usuario;
+    $exito = false;
+    try{
+
+    //include('model/conexion.php');
+    //$conexion = new Conexion();
+    $q="SELECT * FROM usuario WHERE email ='$email' AND pass='$pass'";
+    //Una nueva conexion
+    $con = $this->conectar();
+    $res=$con->query($q);
+    $num = $res->num_rows;
+    if($num>0){
+    //
+    session_start();
+    foreach ($res as $item){
+    $id=$item["id"];
+    $usuario = $item["usuario"];
+    $nombre = $item["nombre"];
+    $apellido = $item["apellido"];
+    $email = $item["email"];
+} 
+        $_SESSION['usuario'] = $usuario;
+        $_SESSION['id'] = $id;
                 $exito = true;
                
             }else{
@@ -51,22 +58,28 @@ class UsuarioDAO{
         return $exito;
     }
     
-    public function registro($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento){
-        $exito=false;
+    
+    public function conectarDesdeView(){
         include_once('../../model/conexion.php');
-        try{
-            
-            try
+        try
 		{
-      $this->pdo = Conexion::StartUp();     
+        $pdo = Conexion::StartUp();  
+        return $pdo;
 		}
 		catch(Exception $e)
 		{
 			die($e->getMessage());
 		}
-            
+        
+    }
+    
+    public function registro($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento){
+        $exito=false;
+        include_once('../../model/conexion.php');
+        try{
             //$con = Conexion::StartUp();
-            $consulta = $this->pdo->prepare("INSERT INTO usuario(usuario, email, nombre, apellido, pass, fechanacimiento)
+            $con = $this->conectarDesdeView();
+            $consulta = $con->prepare("INSERT INTO usuario(usuario, email, nombre, apellido, pass, fechanacimiento)
                    VALUES(?,?,?,?,?,?)");
             //$con=$this->__construct();
             //$res=$consulta->prepare($sql);
@@ -83,6 +96,28 @@ class UsuarioDAO{
             throw new Exception("Ocurrio un error" . $e->getTraceAsString());
         }
         return $exito;
+    }
+    
+    public function publicar($descripcion, $foto){
+        $exito = false;
+        session_start();
+        try{
+            $con = $this->conectarDesdeView();
+          /*  $sql = "INSERT INTO publicacion (descripcion, usuario, fechapublicacion, foto)
+                VALUES ('$descripcion','{$_SESSION['id']}','$foto')";*/
+           //$con = $this->conectar();
+       // $res=$con->query($q);
+       // $num = $res->num_rows;
+            $consulta = $con->prepare("INSERT INTO publicacion (descripcion, usuario, foto)
+                VALUES (?,?,?)");
+            $consulta->bindParam(1,$descripcion,PDO::PARAM_STR);
+            $consulta->bindParam(2,$_SESSION['id'],PDO::PARAM_STR);
+            $consulta->bindParam(3,$foto,PDO::PARAM_STR);
+           $exito = $consulta->execute();
+        }catch(Exception $e){
+        throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());    
+        }
+     return $exito;   
     }
     
 }

@@ -15,6 +15,11 @@ class Negocio{
         $res = $this->user->registro($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento);
         return $res;
     }
+    
+    public function publicarNegocio($descripcion, $foto){
+        $res=$this->user->publicar($descripcion, $foto);
+        return $res;
+    }
 
 }
 

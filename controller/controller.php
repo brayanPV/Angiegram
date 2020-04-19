@@ -25,7 +25,7 @@ class Controller{
         $negocio=new Negocio();
         $res=$negocio->loginNegocio($email,$pass);
         if($res==1){
-        header('location: view/html/politicas.html');
+        header('location: view/html/perfil.php');
         }
         else{
         header('location: index.php');
@@ -50,6 +50,19 @@ class Controller{
     }
     //echo $res;
     //return $res;
+    }
+    
+    public function publicarController($descripcion, $foto){
+    include '../../model/Negocio.php';
+    $negocio=new Negocio();
+    $res=$negocio->publicarNegocio($descripcion, $foto);    
+    if($res== true){
+    echo "entró al if";
+    header('location: perfil.php');
+    }else{
+    echo "entra al else";
+    echo "ERROR PAPI ";
+    }
     }
 }
 
