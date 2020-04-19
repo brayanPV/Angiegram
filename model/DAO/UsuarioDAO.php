@@ -1,12 +1,12 @@
 <?php
-require_once '../../model/conexion.php';
+//require_once '../../model/conexion.php';
 class UsuarioDAO{
    private $pdo;
     //public $conexion;
     
-    public function __construct(){
+    /*public function __construct(){
         //  $this->conexion=new Conexion();
-        
+        //require_once '../../model/conexion.php';
         try
 		{
       $this->pdo = Conexion::StartUp();     
@@ -15,11 +15,11 @@ class UsuarioDAO{
 		{
 			die($e->getMessage());
 		}
-    }
+    }*/
 
     //Metodo para llamar la conexion a la BD
     public function conectar(){
-        include_once('../../model/conexion.php');
+        include_once './model/conexion.php';
         $conexion = new Conexion();
         return $conexion;
     }
@@ -53,7 +53,18 @@ class UsuarioDAO{
     
     public function registro($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento){
         $exito=false;
+        include_once('../../model/conexion.php');
         try{
+            
+            try
+		{
+      $this->pdo = Conexion::StartUp();     
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+            
             //$con = Conexion::StartUp();
             $consulta = $this->pdo->prepare("INSERT INTO usuario(usuario, email, nombre, apellido, pass, fechanacimiento)
                    VALUES(?,?,?,?,?,?)");
