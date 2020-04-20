@@ -29,6 +29,10 @@ class Negocio{
         $res=$this->user->mostrarPublicaciones();
         return $res;
     }
+     public function mostrarPublicacionesPersonasNegocio($usuario){
+        $res=$this->user->mostrarPublicacionesPersonas($usuario);
+        return $res;
+    }
 
 }
 

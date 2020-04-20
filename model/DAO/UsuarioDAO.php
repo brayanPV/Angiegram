@@ -150,6 +150,18 @@ class UsuarioDAO{
         }
     }
     
+    public function mostrarPublicacionesPersonas($usuario){
+        try{
+            //$id=$_SESSION['id'];
+            $con = $this->conectarDesdeView();
+            $consulta = $con->prepare("SELECT * FROM publicacion WHERE usuario = '$usuario' ORDER BY fechapublicacion DESC");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());  
+        }
+    }
+    
 }
 
 ?>
