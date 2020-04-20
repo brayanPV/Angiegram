@@ -72,6 +72,7 @@
         <div class="row py-4 align-items-center">
             <div class="col-6 my-4 d-flex justify-content-center">
                 <div class="icon">
+                   <h3><?php$usuario = $_POST['usuario'];?></h3>
                     <img src="../imagenes/prueba.png" alt="" id="imagen">
 
                     <ul class="menu">
@@ -107,11 +108,12 @@
 
     <div class="container">
         <div class="row align-items-center">
-
+            
             <?php 
+            $usuario = $_POST['usuario'];
             include_once'../../controller/Controller.php';
             $control = new Controller();
-            $img = $control->mostrarPublicacionesPersonasController();
+            $img = $control->mostrarPublicacionesPersonasController($usuario);
             //echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>';
             if($img!=null){
                 foreach($img as $r):?>

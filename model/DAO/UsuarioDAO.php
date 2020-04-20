@@ -126,7 +126,7 @@ class UsuarioDAO{
         $_SESSION['buscar'] = $usuario;
         try{
             $con = $this->conectarDesdeView();
-            $consulta = $con->prepare('SELECT usuario, nombre, apellido FROM usuario WHERE nombre LIKE "%' .$usuario. '%" OR
+            $consulta = $con->prepare('SELECT id,usuario, nombre, apellido FROM usuario WHERE nombre LIKE "%' .$usuario. '%" OR
             apellido LIKE "%' .$usuario. '%" OR
             usuario LIKE "%' .$usuario. '%";');
             $consulta->execute();
