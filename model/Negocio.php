@@ -33,6 +33,10 @@ class Negocio{
         $res=$this->user->mostrarPublicacionesPersonas($usuario);
         return $res;
     }
+    public function mostrarPublicacionesFeedNegocio(){
+        $res=$this->user->mostrarPublicacionesFeed();
+        return $res;
+    }
 
 }
 

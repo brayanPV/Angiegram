@@ -102,6 +102,17 @@ class Controller{
         }
     }
     
+    public function mostrarPublicacionesFeedController(){
+        include '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->mostrarPublicacionesFeedNegocio();
+        if($res!=null){
+            return $res;
+        }else{
+            echo "agrega amigos";
+        }
+    }
+    
     
 }
 
