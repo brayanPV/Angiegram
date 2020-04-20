@@ -75,6 +75,19 @@ class Controller{
             header('location: search.php');
         }
     }
+    public function mostrarPublicacionesController(){
+       // session_start(); 
+        include '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->mostrarPublicacionesNegocio(); 
+        if($res!=null){
+            //echo $res;
+            return $res;
+           // $_SESSION['imagenes'] = $res;
+        }else{
+           echo "no se ha realizado ninguna publicacion";
+        }
+    }
 }
 
 ?>

@@ -108,14 +108,21 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-3 p-2"><a href=""><img src="../imagenes/prueba.png" alt="" class="img-fluid"></a></div>
-            <div class="col-3 p-2"><a href=""><img src="../imagenes/prueba.png" alt="" class="img-fluid"></a></div>
-            <div class="col-3 p-2"><a href=""><img src="../imagenes/prueba.png" alt="" class="img-fluid"></a></div>
-            <div class="col-3 p-2"><a href=""><img src="../imagenes/prueba.png" alt="" class="img-fluid"></a></div>
-            <div class="col-3 p-2"><a href=""><img src="../imagenes/prueba.png" alt="" class="img-fluid"></a></div>
-            <div class="col-3 p-2"><a href=""><img src="../imagenes/prueba.png" alt="" class="img-fluid"></a></div>
-            <div class="col-3 p-2"><a href=""><img src="../imagenes/prueba.png" alt="" class="img-fluid"></a></div>
-        </div>
+           
+           <?php 
+            include_once'../../controller/Controller.php';
+            $control = new Controller();
+            $img = $control->mostrarPublicacionesController();
+            //echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>';
+            if($img!=null){
+                foreach($img as $r):?>
+            <div class="col-3 p-2">
+             <?php   echo '<a > <img src="../imagenes/'.$r->foto.'"/> </a>';?>
+            </div>
+            <?php endforeach; 
+            }?>
+            
+         </div>
     </div>
 
     <!-- JQuery -->
