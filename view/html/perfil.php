@@ -37,7 +37,7 @@
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="usuario">
                         <button class="btn btn-outline-primary" type="submit" name="buscar">Search</button>
                     </form>
-            <?php 
+                    <?php 
             if(isset($_POST["buscar"])){
             require_once '../../controller/Controller.php';
             $usuario=$_POST["usuario"];
@@ -69,8 +69,8 @@
     </header>
 
     <div class="container">
-       <a href="publicar.php"  target="_blank"> PUBLICAR FOTO</a>
-        <div class="row py-4">
+        <a href="publicar.php" target="_blank"> PUBLICAR FOTO</a>
+        <div class="row py-4 align-items-center">
             <div class="col-6 my-4 d-flex justify-content-center">
                 <div class="icon">
                     <img src="../imagenes/prueba.png" alt="" id="imagen">
@@ -101,15 +101,22 @@
                 </div>
             </div>
 
+            <div class="col-6">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+                    Postear Foto
+                </button>
+
+            </div>
+
         </div>
     </div>
 
 
 
     <div class="container">
-        <div class="row">
-           
-           <?php 
+        <div class="row align-items-center">
+
+            <?php 
             include_once'../../controller/Controller.php';
             $control = new Controller();
             $img = $control->mostrarPublicacionesController();
@@ -117,12 +124,33 @@
             if($img!=null){
                 foreach($img as $r):?>
             <div class="col-3 p-2">
-             <?php   echo '<a > <img src="../imagenes/'.$r->foto.'"/> </a>';?>
+                <?php   echo '<a > <img src="../imagenes/'.$r->foto.'" class="img-fluid"/> </a>';?>
             </div>
             <?php endforeach; 
             }?>
-            
-         </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Postear Foto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <?php include_once 'publicar.php' ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- JQuery -->
