@@ -180,6 +180,22 @@ and a.usuario = '$id'");
         }
     }
     
+    public function contarAmigos(){
+        try{
+            $id =$_SESSION['id'];
+            $con = $this->conectarDesdeView();
+            $consulta = $con->prepare("SELECT a.amistad, u.usuario, u.nombre, u.apellido
+from amistad a
+inner join usuario u
+on a.amistad= u.id
+and a.usuario = '$id' ");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());  
+        }
+    }
+    
 }
 
 ?>

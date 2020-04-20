@@ -53,9 +53,8 @@
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="../html/perfil.html">Perfil</a>
-                            <a class="dropdown-item" href="#">Siguiendo</a>
-                            <a class="dropdown-item" href="#">Seguidores</a>
-                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="misamigos.php">amiguis</a>
+                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Configuración</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../index.php">Cerrar Sesión</a>

@@ -37,6 +37,10 @@ class Negocio{
         $res=$this->user->mostrarPublicacionesFeed();
         return $res;
     }
+    public function contarAmigosNegocio(){
+        $res=$this->user->contarAmigos();
+        return $res; 
+    }
 
 }
 
