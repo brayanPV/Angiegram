@@ -33,11 +33,18 @@
                     <a href="../../login.html"> <?php session_start();  echo $_SESSION['usuario'];?></a>
                 </div>
                 <div class="col-4">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    <form class="form-inline" method="POST">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="usuario">
+                        <button class="btn btn-outline-primary" type="submit" name="buscar">Search</button>
                     </form>
-
+            <?php 
+            if(isset($_POST["buscar"])){
+            require_once '../../controller/Controller.php';
+            $usuario=$_POST["usuario"];
+            $send = new Controller();
+            $res=$send->buscarPersonasController($usuario);
+                    }
+                    ?>
                 </div>
                 <div class="col-4 d-flex flex-row-reverse">
                     <div class="btn-group dropleft">

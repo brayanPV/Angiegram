@@ -20,6 +20,11 @@ class Negocio{
         $res=$this->user->publicar($descripcion, $foto);
         return $res;
     }
+    
+    public function buscarPersonasNegocio($usuario){
+        $res=$this->user->buscarPersonas($usuario);
+        return $res;
+    }
 
 }
 

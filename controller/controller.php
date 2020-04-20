@@ -64,6 +64,17 @@ class Controller{
     echo "ERROR PAPI ";
     }
     }
+    
+    public function buscarPersonasController($usuario){
+        include '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->buscarPersonasNegocio($usuario); 
+        if($res!=null){
+            session_start();
+            $_SESSION['busqueda'] = $res;
+            header('location: search.php');
+        }
+    }
 }
 
 ?>

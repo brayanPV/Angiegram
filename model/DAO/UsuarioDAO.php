@@ -120,6 +120,24 @@ class UsuarioDAO{
      return $exito;   
     }
     
+    public function buscarPersonas($usuario){
+        //$exito=false;
+        session_start();
+        $_SESSION['buscar'] = $usuario;
+        try{
+            $con = $this->conectarDesdeView();
+            $consulta = $con->prepare('SELECT usuario, nombre, apellido FROM usuario WHERE nombre LIKE "%' .$usuario. '%" OR
+            apellido LIKE "%' .$usuario. '%" OR
+            usuario LIKE "%' .$usuario. '%";');
+            $consulta->execute();
+            //echo $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+            
+        }catch(Exception $e){
+          throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());  
+        }
+    }
+    
 }
 
 ?>
