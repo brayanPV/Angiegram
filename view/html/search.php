@@ -73,9 +73,9 @@
             <?php //session_start();
    // var_dump($_SESSION['busqueda']);
                 foreach($_SESSION['busqueda'] as $r): ?>
-                <a href="perfilBuscado.php?usuario=<?php echo $r->usuario; ?>">
+
             <div class="row justify-content-center wow fadeInUp ">
-               
+
                 <div class="col-10 my-2">
                     <div class="row border border-light">
                         <div class="col-3">
@@ -88,14 +88,19 @@
                         </div>
                         <div class="col-2 align-self-center">
                             <button type="button" class="btn btn-primary px-3"><i class="fas fa-user-plus" aria-hidden="true"></i></button>
+
+                            <form action="">
+                                <input type="hidden" name="usuario" value="<?php echo $r->usuario; ?>">
+                                <button class="btn btn-info btn-block" type="submit">Ver Perfil</button>
+                            </form>
                         </div>
                     </div>
 
 
                 </div>
-                
+
             </div>
-            </a>
+
             <?php endforeach; ?>
 
 
