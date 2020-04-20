@@ -53,7 +53,7 @@ class Controller{
     }
     
     public function publicarController($descripcion, $foto){
-    include_once '../../model/Negocio.php';
+    include '../../model/Negocio.php';
     $negocio=new Negocio();
     $res=$negocio->publicarNegocio($descripcion, $foto);    
     if($res== true){
@@ -77,7 +77,7 @@ class Controller{
     }
     public function mostrarPublicacionesController(){
        // session_start(); 
-        include_once '../../model/Negocio.php';
+        include '../../model/Negocio.php';
         $negocio=new Negocio();
         $res=$negocio->mostrarPublicacionesNegocio(); 
         if($res!=null){
@@ -88,6 +88,21 @@ class Controller{
            echo "no se ha realizado ninguna publicacion";
         }
     }
+    public function mostrarPublicacionesPersonasController($usuario){
+       // session_start(); 
+        include '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->mostrarPublicacionesPersonasNegocio($usuario); 
+        if($res!=null){
+            //echo $res;
+            return $res;
+           // $_SESSION['imagenes'] = $res;
+        }else{
+           echo "no se ha realizado ninguna publicacion";
+        }
+    }
+    
+    
 }
 
 ?>

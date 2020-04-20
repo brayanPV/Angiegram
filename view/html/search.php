@@ -73,7 +73,7 @@
             <?php //session_start();
    // var_dump($_SESSION['busqueda']);
                 foreach($_SESSION['busqueda'] as $r): ?>
-                <a href="../perfil.php?usuario=<?php echo $r->usuario; ?>">
+                <a href="perfilBuscado.php?usuario=<?php echo $r->usuario; ?>">
             <div class="row justify-content-center wow fadeInUp ">
                
                 <div class="col-10 my-2">
