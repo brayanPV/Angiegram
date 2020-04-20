@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
+    <title>Amigos</title>
     <link rel="icon" href="../imagenes/logo.png">
     <!--FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -55,52 +55,15 @@
         </div>
     </header>
 
-    <div class="icon">
-        <img src="../imagenes/prueba.png" alt="" id="imagen">
+    <div class="titulo-s">
+        <h4>Amigos</h4>
 
-        <ul class="menu">
-
-            <li class="spread">
-                <a class="unit" href="#"><i class="far fa-thumbs-up"></i></a>
-            </li>
-
-            <li class="spread">
-                <a class="unit" href="#"><i class="fas fa-location-arrow"></i></a>
-            </li>
-
-            <li class="spread">
-                <a class="unit" href="#"><i class="fas fa-ban"></i></a>
-            </li>
-
-            <li class="spread">
-                <a class="unit" href="#"><i class="fas fa-bomb"></i></a>
-            </li>
-
-            <li class="spread">
-                <a class="unit" href="#"></a>
-            </li>
-
-            <li class="spread">
-                <a class="unit" href="#"></a>
-            </li>
-
-            <li class="spread">
-                <a class="unit" href="#"></a>
-            </li>
-
-            <li class="spread">
-                <a class="unit " href="#"></a>
-            </li>
-
-            <li class="spread" id="corazon">
-                <a class="unit" href="#"><i class="fas fa-heart"></i></a>
-            </li>
-
-        </ul>
+        <div class="atras">
+            <a href="" class=" fas fa-arrow-circle-left"></a>
+        </div>
     </div>
 
-
-    <div class="grid">
+    <div class="seguidores">
         <!-- contenedor -->
 
         <div class="foto">
@@ -150,16 +113,12 @@
             <img src="../imagenes/prueba.png" alt="">
         </div>
 
-        <div class="foto">
-            <img src="../imagenes/prueba.png" alt="">
-        </div>
-
-        <div class="foto">
-            <img src="../imagenes/prueba.png" alt="">
-        </div>
-    </div><br>
 
 
+
+
+
+    </div>
 
 
 
