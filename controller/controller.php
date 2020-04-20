@@ -112,6 +112,20 @@ class Controller{
             echo "agrega amigos";
         }
     }
+    public function contarAmigosController(){
+        session_start();
+        include '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->contarAmigosNegocio();
+        if($res!=null){
+            $_SESSION['num'] = $res;
+            var_dump($res);
+            echo $res;
+           return $res;
+        }else{
+            return "agrega amigos";
+        }
+    }
     
     
 }
