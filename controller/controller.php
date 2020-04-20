@@ -53,7 +53,7 @@ class Controller{
     }
     
     public function publicarController($descripcion, $foto){
-    include '../../model/Negocio.php';
+    include_once '../../model/Negocio.php';
     $negocio=new Negocio();
     $res=$negocio->publicarNegocio($descripcion, $foto);    
     if($res== true){
@@ -77,7 +77,7 @@ class Controller{
     }
     public function mostrarPublicacionesController(){
        // session_start(); 
-        include '../../model/Negocio.php';
+        include_once '../../model/Negocio.php';
         $negocio=new Negocio();
         $res=$negocio->mostrarPublicacionesNegocio(); 
         if($res!=null){
