@@ -25,7 +25,7 @@
 <body>
 
 
-<header class="grey lighten-4 mb-3">
+    <header class="grey lighten-4 mb-3">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-4 align-self-center">
@@ -45,8 +45,8 @@
             $res=$send->buscarPersonasController($usuario);
                     }
                     ?>
-                    
- </div>
+
+                </div>
                 <div class="col-4 d-flex flex-row-reverse">
                     <div class="btn-group dropleft">
                         <button type="button" class="btn btn-secondary " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,31 +68,64 @@
         </div>
 
     </header>
-    
-   <div class="container">
-   <?php 
+
+    <div class="container">
+        <?php 
             include_once'../../controller/Controller.php';
             $control = new Controller();
             $img = $control->mostrarPublicacionesFeedController();
             //echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>';
             if($img!=null){
                 foreach($img as $r):?>
-            <div class="col-3 p-2">
-               <?php   echo '<h3>' .$r->usuario.'</h3>';?>
-                <?php   echo '<a > <img src="../imagenes/'.$r->foto.'" class="img-fluid"/> </a>';?>
-                <?php   echo '<h3>'.$r->descripcion.'</h3>';?>
+
+        <div class="row justify-content-center my-3">
+            <div class="col-lg-8 mt-1">
+                <!--fila del encabezado del post-->
+                <div class="row rounded mb-0 border border-light pt-1">
+                    <div class="col-2">
+                        <img src="../imagenes/prueba.png" alt="" class="img-fluid rounded-circle">
+                    </div>
+                    <div class="col-10">
+                        <h3 class="font-weight-bold"><?php echo $r->usuario ;?></h3>
+
+                    </div>
+
+                    <div class="col-12 mt-1">
+                        <p><?php echo $r->descripcion ;?></p>
+                    </div>
+                    <img src="../imagenes/<?php echo $r->foto ;?>" alt="" class="img-fluid mt-1" width="100%">
+                    <hr>
+                    <div class="col-12 my-2">
+                        <form action="" class="">
+                            <div class="form-row">
+                                <div class="col-9">
+                                    <label for="exampleFormControlTextarea1" class="sr-only">Comentar</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                </div>
+                                <div class="col-3">
+                                    <button type="submit" class="btn btn-primary mb-2">Comentar</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
             </div>
-            <?php endforeach; 
+        </div>
+
+        <?php endforeach; 
             }?>
-    </div>
-      <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+
+        
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 
 </body>
 
