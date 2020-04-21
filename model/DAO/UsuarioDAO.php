@@ -46,8 +46,9 @@ class UsuarioDAO{
     $email = $item["email"];
 } 
         $_SESSION['usuario'] = $usuario;
-        $_SESSION['id'] = $id;
-                $exito = true;
+        $_SESSION['nombre'] = $nombre;
+        $_SESSION['apellido'] = $apellido;
+         $exito = true;
                
             }else{
                echo "no exite nadie OwO";
@@ -196,6 +197,32 @@ and a.usuario = '$id' ");
 
         }catch(Exception $e){
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());  
+        }
+    }
+    
+    public function editarPerfil($usuario, $nombre, $apellido, $pass, $foto){
+        $exito = false;
+        session_start();
+        try{
+            $id=$_SESSION['id'];
+            $con=$this->conectarDesdeView();
+            $consulta = $con->prepare("UPDATE usuario
+            SET usuario = ?,
+            nombre = ?,
+            apellido = ?,
+            pass=?,
+            foto=?
+            where id = ?");
+            $consulta->bindParam(1,$usuario,PDO::PARAM_STR);
+            $consulta->bindParam(2,$nombre,PDO::PARAM_STR);
+            $consulta->bindParam(3,$apellido,PDO::PARAM_STR);
+            $consulta->bindParam(4,$pass,PDO::PARAM_STR);
+            $consulta->bindParam(5,$foto,PDO::PARAM_STR);
+            $consulta->bindParam(6,$_SESSION['id'],PDO::PARAM_STR);
+            $exito = $consulta->execute();
+            return $exito;
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
         }
     }
     

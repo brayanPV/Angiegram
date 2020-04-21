@@ -35,7 +35,7 @@
 
                 </div>
 
-                <form class="col-12 form" action="" method="POST">
+                <form class="col-12 form" action="" method="POST" enctype="multipart/form-data">
                     <div class="form-group" id="user-group">
                         <input class="form-control" type="text" placeholder="Usuario" name="usuario" />
                     </div>
@@ -54,12 +54,25 @@
 
                     <div id="cargar-foto">
                         <i class="fas fa-images"></i>
-                        <input type="file" id="btn_enviar" accept=".jpg,.png,.jpeg ">
+                        <input type="file" name='foto'>
                     </div><br>
 
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt"></i>       Editar</button>
+                    <button class="btn btn-primary" type="submit" name="editar"><i class="fas fa-sign-in-alt"></i>Editar</button>
                 </form>
-
+                <?php
+                if(isset($_POST["editar"])){
+                require_once('../../controller/Controller.php');
+                $usuario=$_POST["usuario"];
+                $nombre=$_POST["nombre"];
+                $apellido=$_POST["apellido"];
+                $pass=$_POST["pass"];
+                $foto=$_FILES['foto']['name'];
+                $send = new Controller();
+                $res = $send->editarPerfilController($usuario,$nombre, $apellido, $pass, $foto);
+                
+                echo $res;
+                }
+                ?>
 
 
                 <!-- controlador -->

@@ -26,7 +26,6 @@
             $descripicion=$_POST["descripcion"];
             $send= new Controller();
             $res= $send->publicarController($descripicion,$foto);
-            
             echo $res;
         }
         ?>

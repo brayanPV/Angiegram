@@ -112,21 +112,7 @@ class Controller{
             echo "agrega amigos";
         }
     }
-  /*  public function contarAmigosController(){
-        session_start();
-        include '../../model/Negocio.php';
-        $negocio=new Negocio();
-        $res=$negocio->contarAmigosNegocio();
-        if($res!=null){
-            $_SESSION['num'] = $res;
-            var_dump($res);
-            echo $res;
-           return $res;
-        }else{
-            return "agrega amigos";
-        }
-    }*/
-    
+  
     public function contarAmigosController(){
         include '../../model/Negocio.php';
         $negocio=new Negocio();
@@ -141,7 +127,16 @@ class Controller{
         }
     }
     
-    
+    public function editarPerfilController($usuario, $nombre, $apellido, $pass, $foto){
+        include '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->editarPerfilNegocio($usuario, $nombre, $apellido, $pass, $foto);
+        if($res!=null){
+            header('location: perfil.php');
+        }else{
+            
+        }
+    }
 }
 
 ?>

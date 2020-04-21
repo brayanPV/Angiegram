@@ -39,9 +39,11 @@ class Negocio{
     }
     public function contarAmigosNegocio(){
         $res=$this->user->contarAmigos();
-
         return $res; 
-
+    }
+    public function editarPerfilNegocio($usuario, $nombre, $apellido, $pass, $foto){
+        $res=$this->user->editarPerfil($usuario, $nombre, $apellido, $pass, $foto);
+        return $res;
     }
 
 }
