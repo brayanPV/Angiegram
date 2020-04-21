@@ -10,7 +10,7 @@
                 <div class="col-10 my-2">
                     <div class="row border border-light">
                         <div class="col-3">
-                            <img src="../imagenes/prueba.png" alt="" class="img-fluid rounded-circle">
+                            <img src="../imagenes/<?php echo $r->foto; ?>" alt="" class="img-fluid rounded-circle">
                         </div>
                         <div class="col-7 align-self-center">
                             <h2><?php echo $r->usuario; ?></h2>

@@ -75,6 +75,16 @@ class Controller{
             header('location: search.php');
         }
     }
+    
+    public function mostrarPerfilBuscadoController($usuario){
+        include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->mostrarPerfilBuscadoNegocio($usuario); 
+        if($res!=null){
+            return $res;
+        }
+    }
+    
     public function mostrarPublicacionesController(){
        // session_start(); 
         include '../../model/Negocio.php';
@@ -90,7 +100,7 @@ class Controller{
     }
     public function mostrarPublicacionesPersonasController($usuario){
        // session_start(); 
-        include '../../model/Negocio.php';
+        include_once '../../model/Negocio.php';
         $negocio=new Negocio();
         $res=$negocio->mostrarPublicacionesPersonasNegocio($usuario); 
         if($res!=null){

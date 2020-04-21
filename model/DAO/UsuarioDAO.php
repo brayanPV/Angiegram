@@ -130,14 +130,26 @@ class UsuarioDAO{
         $_SESSION['buscar'] = $usuario;
         try{
             $con = $this->conectarDesdeView();
-            $consulta = $con->prepare('SELECT id,usuario, nombre, apellido FROM usuario WHERE nombre LIKE "%' .$usuario. '%" OR
+            $consulta = $con->prepare('SELECT id,usuario, nombre, apellido, foto FROM usuario WHERE nombre LIKE "%' .$usuario. '%" OR
             apellido LIKE "%' .$usuario. '%" OR
             usuario LIKE "%' .$usuario. '%";');
             $consulta->execute();
             //echo $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
-            
-        }catch(Exception $e){
+         }catch(Exception $e){
+          throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());  
+        }
+    }
+    
+    public function mostrarPerfilBuscado($usuario){
+        try{
+            $con = $this->conectarDesdeView();
+            $consulta = $con->prepare("SELECT id,usuario, nombre, apellido, foto FROM usuario 
+            WHERE id = '$usuario'");
+            $consulta->execute();
+            //echo $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+         }catch(Exception $e){
           throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());  
         }
     }
