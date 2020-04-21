@@ -183,16 +183,17 @@ order by p.fechapublicacion DESC");
     
     public function contarAmigos(){
         try{
-            $id = $_SESSION['id'];
+
+            $id =$_SESSION['id'];
             $con = $this->conectarDesdeView();
-            $consulta = $con->prepare("SELECT COUNT(a.usuario) from amistad a
+            $consulta = $con->prepare("SELECT a.amistad, u.usuario, u.nombre, u.apellido
+from amistad a
 inner join usuario u
-on u.id = a.usuario
-and u.id = '$id'");
+on a.amistad= u.id
+and a.usuario = '$id' ");
             $consulta->execute();
-            $row = $consulta->fetch(PDO::FETCH_ASSOC);
-            return $row;
-            //return $consulta->fetchAll(PDO::FETCH_OBJ);
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+
         }catch(Exception $e){
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());  
         }

@@ -39,7 +39,9 @@ class Negocio{
     }
     public function contarAmigosNegocio(){
         $res=$this->user->contarAmigos();
-        return $res;
+
+        return $res; 
+
     }
 
 }

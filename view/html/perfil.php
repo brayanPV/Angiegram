@@ -1,4 +1,6 @@
+
 <?php include 'partials/header.php' ?>
+
 
     <div class="container">
         <a href="publicar.php" target="_blank"> PUBLICAR FOTO</a>

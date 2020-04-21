@@ -127,6 +127,20 @@ class Controller{
         }
     }
     
+    public function contarAmigosController(){
+        include '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->contarAmigosNegocio();
+        if($res!=null){
+            //session_start();
+            //$_SESSION['misamigos'] = $res;
+            return $res;
+           // header('location: misamigos.php');
+        }else{
+            echo "agregue amigos";
+        }
+    }
+    
     
 }
 
