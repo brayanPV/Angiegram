@@ -44,10 +44,13 @@ class UsuarioDAO{
     $nombre = $item["nombre"];
     $apellido = $item["apellido"];
     $email = $item["email"];
+    $foto=$item["foto"];
 } 
         $_SESSION['usuario'] = $usuario;
         $_SESSION['nombre'] = $nombre;
         $_SESSION['apellido'] = $apellido;
+        $_SESSION['foto'] = $foto;
+        $_SESSION['id'] = $id;
          $exito = true;
                
             }else{

@@ -5,18 +5,10 @@
     <div class="container">
         <a href="publicar.php" target="_blank"> PUBLICAR FOTO</a>
         <a href="feed.php" target="_blank"> FEED</a>
-        <p> <h2> Amigos: <?php 
-        if (isset($_SESSION['num'])) {
-    // acciones
-            echo $_SESSION['num'];
-} else {
-    // otras acciones
-}
-        ;?> </h2></p>
         <div class="row py-4 align-items-center">
             <div class="col-6 my-4 d-flex justify-content-center">
                 <div class="icon">
-                    <img src="../imagenes/prueba.png" alt="" id="imagen">
+                    <img src="../imagenes/<?php echo $_SESSION['foto'];?>" alt="" id="imagen">
 
                     <ul class="menu">
 
