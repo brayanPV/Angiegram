@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Registrar</title>
+    <title>Editar Perfil</title>
     <link rel="icon" href="../imagenes/logo.png">
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
 </head>
 
+
 <body>
 
     <div class="modal-dialog text-center">
@@ -30,56 +31,51 @@
                 <div class="col-12 user-img">
                     <img src="../imagenes/logo.png" alt="">
                     <h1>AngieGram</h1>
-                    <h4>REGISTRO </h4>
+                    <h4>Editar Perfil</h4>
 
                 </div>
-                <p class="cuenta">Ya Tiene Cuenta <a href="../../index.php">ACCEDE</a></p>
 
                 <form class="col-12 form" action="" method="POST">
                     <div class="form-group" id="user-group">
                         <input class="form-control" type="text" placeholder="Usuario" name="usuario" />
                     </div>
-                    
-                    <div class="form-group" id="email-group">
-                        <input class="form-control" type="email" placeholder="Correo"  name="email"/>
-                    </div>
-                    
+
                     <div class="form-group" id="nombre-group">
                         <input class="form-control" type="text" placeholder="Nombre" name="nombre" />
                     </div>
-                    
+
                     <div class="form-group" id="apellido-group">
-                        <input class="form-control" type="text" placeholder="Apellido"  name="apellido"/>
+                        <input class="form-control" type="text" placeholder="Apellido" name="apellido" />
                     </div>
 
-                     <div class="form-group" id="contraseña-group">
+                    <div class="form-group" id="contraseña-group">
                         <input class="form-control" type="password" placeholder="Contraseña" name="pass" />
                     </div>
-                    
-                    <div class="form-group" id="nacimiento-group">
-                        <input class="form-control" type="date" placeholder="" name="fechaNacimiento" />
-                    </div>
 
-                    <input class="checkbox" type="checkbox" id="terminos" name="terminos" value="Bike">
-                    <label for="vehicle1">Acepto los terminos y condiciones </label><br>
-                    <a href="terminos.html">Ver terminos y condiciones</a>
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt"></i>       Ingresar</button>
+                    <div id="cargar-foto">
+                        <i class="fas fa-images"></i>
+                        <input type="file" id="btn_enviar" accept=".jpg,.png,.jpeg ">
+                    </div><br>
+
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt"></i>       Editar</button>
                 </form>
-                <?php
-                if(isset($_POST["usuario"])){
-                require_once('../../controller/Controller.php');
-                $usuario=$_POST["usuario"];
-                $email=$_POST["email"];
-                $nombre=$_POST["nombre"];
-                $apellido=$_POST["apellido"];
-                $pass=$_POST["pass"];
-                $fechaNacimiento=$_POST["fechaNacimiento"];
-                $send = new Controller();
-                $res = $send->registroController($usuario,$email, $nombre, $apellido, $pass, $fechaNacimiento);
-                
-                echo $res;
-                }
-                ?>
+
+
+
+                <!-- controlador -->
+                <!-- 	public function store(CreateEmpresaRequest $request){
+        $input = $request->all();
+        if($request->hasFile('banner')){
+            $file = $request->file('banner');
+            $extension= $file->getClientOriginalExtension();
+            $nombreImagen = 'logo.'.$extension;
+            $file->move(public_path().'/img/uploads/empresa',$nombreImagen);
+            $input['banner']=$nombreImagen;
+        }
+		$empresa = $this->empresaRepository->store($input);
+		Flash::message('Datos Almacenados Correctamente.');
+		return redirect(route('empresas.index'));
+	}-->
             </div>
 
         </div>
@@ -87,6 +83,5 @@
     </div>
 
 </body>
-
 
 </html>

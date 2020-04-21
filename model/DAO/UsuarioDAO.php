@@ -172,7 +172,8 @@ inner join amistad a
 on a.amistad = p.usuario
 inner join usuario u 
 on u.id = p.usuario 
-and a.usuario = '$id'");
+and a.usuario = '$id'
+order by p.fechapublicacion DESC");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $e){
@@ -182,6 +183,7 @@ and a.usuario = '$id'");
     
     public function contarAmigos(){
         try{
+
             $id =$_SESSION['id'];
             $con = $this->conectarDesdeView();
             $consulta = $con->prepare("SELECT a.amistad, u.usuario, u.nombre, u.apellido
@@ -191,6 +193,7 @@ on a.amistad= u.id
 and a.usuario = '$id' ");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
+
         }catch(Exception $e){
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());  
         }
