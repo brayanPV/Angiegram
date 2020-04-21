@@ -52,11 +52,10 @@
                             <i class="fas fa-user" style="width:30; height:30;"></i>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="../html/perfil.html">Perfil</a>
-                            <a class="dropdown-item" href="#">Siguiendo</a>
-                            <a class="dropdown-item" href="#">Seguidores</a>
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" href="amigos.php">Amigos</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Configuración</a>
+                            <a class="dropdown-item" href="configuracion.php">Configuración</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../index.php">Cerrar Sesión</a>
                         </div>
