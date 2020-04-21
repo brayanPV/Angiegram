@@ -112,7 +112,7 @@ class Controller{
             echo "agrega amigos";
         }
     }
-    public function contarAmigosController(){
+  /*  public function contarAmigosController(){
         session_start();
         include '../../model/Negocio.php';
         $negocio=new Negocio();
@@ -125,7 +125,7 @@ class Controller{
         }else{
             return "agrega amigos";
         }
-    }
+    }*/
     
     public function contarAmigosController(){
         include '../../model/Negocio.php';
