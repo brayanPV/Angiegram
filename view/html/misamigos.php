@@ -26,7 +26,7 @@
                             <button type="button" class="btn btn-primary px-3"><i class="fas fa-user-plus" aria-hidden="true"></i></button>
 
                             <form action="perfilBuscado.php" method="POST">
-                                <input type="hidden" name="usuario" value="<?php echo $r->id; ?>">
+                                <input type="hidden" name="usuario" value="<?php echo $r->amistad; ?>">
                                 <button class="btn btn-info btn-block" type="submit">Ver Perfil</button>
                             </form>
                         </div>
