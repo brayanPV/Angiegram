@@ -182,7 +182,7 @@ class UsuarioDAO{
         try{
             $id = $_SESSION['id'];
             $con = $this->conectarDesdeView();
-            $consulta=$con->prepare("SELECT p.foto, p.descripcion, u.usuario 
+            $consulta=$con->prepare("SELECT p.id, p.foto, p.descripcion, u.usuario 
 from publicacion p 
 inner join amistad a 
 on a.amistad = p.usuario
@@ -237,6 +237,40 @@ and a.usuario = '$id' ");
             $exito = $consulta->execute();
             return $exito;
         }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+    }
+    
+    public function realizarComentario($publicacion, $comentario){
+        $exito = false;
+        //session_start();
+        try{
+            $id=$_SESSION['id'];
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("INSERT INTO comentario (publicacion,usuario,comentario)
+            VALUES(?,?,?)");
+            $consulta->bindParam(1,$publicacion,PDO::PARAM_STR);
+            $consulta->bindParam(2,$id,PDO::PARAM_STR);
+            $consulta->bindParam(3,$comentario,PDO::PARAM_STR);
+            $exito = $consulta->execute();
+            return $exito;
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+    }
+    
+    public function mostrarComentario($publicacion){
+        $exito=false;
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta = $con->prepare("SELECT u.usuario, c.comentario
+            FROM comentario c
+            INNER JOIN usuario u
+            ON u.id = c.usuario
+            where c.publicacion = '$publicacion'");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+         }catch(Exception $e){
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
         }
     }

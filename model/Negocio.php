@@ -51,6 +51,14 @@ class Negocio{
         $res=$this->user->editarPerfil($usuario, $nombre, $apellido, $pass, $foto);
         return $res;
     }
+    public function realizarComentarioNegocio($publicacion, $comentario){
+        $res=$this->user->realizarComentario($publicacion, $comentario);
+        return $res;
+    }
+    public function mostrarComentarioNegocio($publicacion){
+        $res=$this->user->mostrarComentario($publicacion);
+        return $res;
+    }
 
 }
 

@@ -53,7 +53,7 @@
 
             <?php 
             include_once'../../controller/Controller.php';
-            $control = new Controller();
+            $control = new Controller();    
             $img = $control->mostrarPublicacionesController();
             //echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>';
             if($img!=null){
