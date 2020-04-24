@@ -26,6 +26,10 @@
             $descripicion=$_POST["descripcion"];
             $send= new Controller();
             $res= $send->publicarController($descripicion,$foto);
+            $target = "../imagenes/".basename($_FILES['foto']['name']);
+            if(move_uploaded_file($_FILES['foto']['tmp_name'], $target)){
+                echo $res;
+            }
             echo $res;
         }
         ?>
