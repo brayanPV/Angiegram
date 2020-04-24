@@ -31,16 +31,9 @@
                             </form>
                         </div>
                     </div>
-
-
-                </div>
-
-            </div>
+   </div>
+  </div>
 
             <?php endforeach; }else echo "<p>no tiene amigos<p> <br> F " ?>
-
-
-        </div>
-
-
+ </div>
 <?php include 'partials/footer.php' ?> 

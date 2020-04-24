@@ -30,7 +30,7 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-4 align-self-center">
                     <a href="../../login.html"><img src="../imagenes/logo.png" class="d-inline-block" alt="" width="30%"></a>
-                    <a href="../../login.html"> <?php session_start();  echo $_SESSION['usuario'];?></a>
+                    <a href="../html/perfil.php"> <?php session_start();  echo $_SESSION['usuario'];?></a>
                 </div>
                 <div class="col-4">
                     <form class="form-inline" method="POST">
