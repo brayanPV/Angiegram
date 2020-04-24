@@ -147,6 +147,22 @@ class Controller{
             
         }
     }
+    public function realizarComentarioController($publicacion, $comentario){
+        include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->realizarComentarioNegocio($publicacion, $comentario);
+        
+    }
+    public function mostrarComentarioController($publicacion){
+        include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->mostrarComentarioNegocio($publicacion);
+        if($res!=null){
+            return $res;
+        }else{
+            echo "no hay comentarios aun";
+        }
+    }
 }
 
 ?>
