@@ -199,7 +199,6 @@ order by p.fechapublicacion DESC");
     
     public function contarAmigos(){
         try{
-
             $id =$_SESSION['id'];
             $con = $this->conectarDesdeView();
             $consulta = $con->prepare("SELECT a.amistad, u.usuario, u.nombre, u.apellido
@@ -273,6 +272,21 @@ and a.usuario = '$id' ");
          }catch(Exception $e){
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
         }
+    }
+    
+    public function sonAmigos($idPersona){
+        //$exito = false;
+        //session_start();
+        $id=$_SESSION['id'];
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("select a.amistad from amistad a inner join usuario u on a.amistad = u.id where a.usuario = '$id' and a.amistad = '$idPersona'");
+            $consulta->execute();
+           return $consulta->fetchAll(PDO::FETCH_OBJ); 
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+      //  return $exito;
     }
     
 }

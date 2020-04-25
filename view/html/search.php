@@ -17,9 +17,19 @@
                             <h2><?php echo $r->nombre; ?></h2>
                             <h2><?php echo $r->apellido;?></h2>
                         </div>
+                        <form method="POST">
                         <div class="col-2 align-self-center">
-                            <button type="button" class="btn btn-primary px-3"><i class="fas fa-user-plus" aria-hidden="true"></i></button>
-
+                          <?php 
+                            include_once '../../controller/controller.php';
+                            $control = new Controller();
+                            $id=$r->id;
+                            $exito = $control->sonAmigosController($id);
+                            if($exito==null){
+                                ?>
+                              <button type="button" class="btn btn-primary px-3"><i class="fas fa-user-plus" aria-hidden="true"></i> agregar</button>  <?php
+                            }
+                            ?>
+                        </form>
                             <form action="perfilBuscado.php" method="POST">
                                 <input type="hidden" name="usuario" value="<?php echo $r->id; ?>">
                                 <button class="btn btn-info btn-block" type="submit">Ver Perfil</button>
