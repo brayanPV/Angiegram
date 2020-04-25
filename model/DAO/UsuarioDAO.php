@@ -128,11 +128,16 @@ class UsuarioDAO{
         //$exito=false;
         session_start();
         $_SESSION['buscar'] = $usuario;
+        $id=$_SESSION['id'];
         try{
             $con = $this->conectarDesdeView();
-            $consulta = $con->prepare('SELECT id,usuario, nombre, apellido, foto FROM usuario WHERE nombre LIKE "%' .$usuario. '%" OR
+            $consulta = $con->prepare('SELECT id,usuario, nombre, apellido, foto FROM usuario WHERE
+            id != ? and
+            nombre LIKE "%' .$usuario. '%" OR
             apellido LIKE "%' .$usuario. '%" OR
-            usuario LIKE "%' .$usuario. '%";');
+            usuario LIKE "%' .$usuario. '%";
+             ');
+            $consulta->bindParam(1,$id,PDO::PARAM_STR);
             $consulta->execute();
             //echo $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
@@ -189,6 +194,7 @@ on a.amistad = p.usuario
 inner join usuario u 
 on u.id = p.usuario 
 and a.usuario = '$id'
+and a.estado = 1
 order by p.fechapublicacion DESC");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
@@ -280,7 +286,7 @@ and a.usuario = '$id' ");
         $id=$_SESSION['id'];
         try{
             $con=$this->conectarDesdeView();
-            $consulta=$con->prepare("select a.amistad from amistad a inner join usuario u on a.amistad = u.id where a.usuario = '$id' and a.amistad = '$idPersona' and a.estado = 1");
+            $consulta=$con->prepare("select a.amistad from amistad a inner join usuario u on a.amistad = u.id where a.usuario = '$id' and a.amistad = '$idPersona'");
             $consulta->execute();
            return $consulta->fetchAll(PDO::FETCH_OBJ); 
         }catch(Exception $e){
@@ -294,13 +300,44 @@ and a.usuario = '$id' ");
         $estado = 0;
         try{
             $con=$this->conectarDesdeView();
-            $consulta=$con->prepare("insert into amistad (usuario,amistad,estado)
-            values(?,?,?)");
+            $consulta=$con->prepare("INSERT INTO amistad (usuario,amistad,estado)
+            VALUES (?,?,?)");
             $consulta->bindParam(1,$id,PDO::PARAM_STR);
             $consulta->bindParam(2,$idPersona,PDO::PARAM_STR);
             $consulta->bindParam(3,$estado,PDO::PARAM_STR);
+            return $consulta->execute();
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+    }
+    
+    public function mostrarSolicitud(){
+        $id=$_SESSION['id'];
+        $estado = 0;
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("SELECT u.usuario, u.foto, u.id
+            from usuario u
+            inner join amistad a
+            on a.usuario = u.id
+            and a.amistad = '$id'
+            and a.estado = 0");
             $consulta->execute();
-            return $true;
+            return $consulta->fetchAll(PDO::FETCH_OBJ); 
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());
+        }
+    }
+    
+    public function aceptarSolicitud($solicitante){
+        $id=$_SESSION['id'];
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("UPDATE amistad
+            set estado = 1
+            where amistad = '$id'
+            and usuario = '$solicitante'");
+            return $consulta->execute();
         }catch(Exception $e){
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
         }
