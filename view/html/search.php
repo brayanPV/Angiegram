@@ -17,10 +17,31 @@
                             <h2><?php echo $r->nombre; ?></h2>
                             <h2><?php echo $r->apellido;?></h2>
                         </div>
+                        <form method="POST" action="">
                         <div class="col-2 align-self-center">
-                            <button type="button" class="btn btn-primary px-3"><i class="fas fa-user-plus" aria-hidden="true"></i></button>
-
-                            <form action="perfilBuscado.php" method="POST">
+                          <?php 
+                            include_once '../../controller/controller.php';
+                            $control = new Controller();
+                            $id=$r->id;
+                            $exito = $control->sonAmigosController($id);
+                            if($exito==null){
+                                ?>
+                            <input type="hidden" name="usuario" value="<?php echo $r->id; ?>">
+                              <button type="button" class="btn btn-primary px-3" name="enviarSolicitud"><i class="fas fa-user-plus" aria-hidden="true" ></i> agregar</button>  <?php
+                            }
+                            ?>
+                        </form>
+                           <?php
+                            if(isset($_POST["usuario"])){
+                //require_once('../../controller/Controller.php');
+                            $id=$_POST['usuario'];
+                            echo "tengo un usuario";
+                            $res = $control->enviarSolicitudController($id);
+                            echo $res;
+                }
+                            
+                            ?>
+                           <form action="perfilBuscado.php" method="POST">
                                 <input type="hidden" name="usuario" value="<?php echo $r->id; ?>">
                                 <button class="btn btn-info btn-block" type="submit">Ver Perfil</button>
                             </form>

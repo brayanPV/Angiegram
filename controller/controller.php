@@ -163,6 +163,27 @@ class Controller{
             echo "no hay comentarios aun";
         }
     }
+    public function sonAmigosController($idPersona){
+        include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->sonAmigosNegocio($idPersona);
+        if($res!=null){
+            return $res;
+        }else{
+            return 0;
+        }
+    }
+    public function enviarSolicitudController($idPersona){
+        include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->enviarSolicitudNegocio($idPersona);
+        var_dump($res);
+        if($res==true){
+            header('location: search.php');
+        }else{
+            echo "error";
+        }
+    }
 }
 
 ?>

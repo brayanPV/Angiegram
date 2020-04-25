@@ -59,6 +59,14 @@ class Negocio{
         $res=$this->user->mostrarComentario($publicacion);
         return $res;
     }
+    public function sonAmigosNegocio($idPersona){
+        $res=$this->user->sonAmigos($idPersona);
+        return $res;
+    }
+    public function enviarSolicitudNegocio($idPersona){
+        $res=$this->user->enviarSolicitud($idPersona);
+        return $res;
+    }
 
 }
 

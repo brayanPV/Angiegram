@@ -15,7 +15,7 @@
                 <!--fila del encabezado del post-->
                 <div class="row rounded mb-0 border border-light pt-1">
                     <div class="col-2">
-                        <img src="../imagenes/prueba.png" alt="" class="img-fluid rounded-circle">
+                        <img src="../imagenes/<?php echo $r->fotoP; ?>" alt="" class="img-fluid rounded-circle">
                     </div>
                     <div class="col-10">
                        
@@ -55,15 +55,7 @@
                             </div>
 
                         </form>
-                        <?php
-                if(isset($_POST["botonComentario"])){
-                //require_once('../../controller/Controller.php');
-                $id=$_POST["id"];
-                $comentario=$_POST["comentario"];
-                //$send = new Controller();
-                $res = $control->realizarComentarioController($id,$comentario);
-                }
-                ?>
+                        
                     </div>
                 </div>
             </div>
@@ -71,6 +63,16 @@
 
         <?php endforeach; 
             }?>
+            <?php
+                if(isset($_POST["botonComentario"])){
+                //require_once('../../controller/Controller.php');
+                $id=$_POST["id"];
+                $comentario=$_POST["comentario"];
+                //$send = new Controller();
+                $res = $control->realizarComentarioController($id,$comentario);
+                $comentario=null;    
+                }
+                ?>
             
 </div>
 

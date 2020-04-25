@@ -117,7 +117,7 @@ class UsuarioDAO{
             $consulta->bindParam(1,$descripcion,PDO::PARAM_STR);
             $consulta->bindParam(2,$_SESSION['id'],PDO::PARAM_STR);
             $consulta->bindParam(3,$foto,PDO::PARAM_STR);
-           $exito = $consulta->execute();
+            $exito = $consulta->execute();
         }catch(Exception $e){
         throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());    
         }
@@ -182,7 +182,7 @@ class UsuarioDAO{
         try{
             $id = $_SESSION['id'];
             $con = $this->conectarDesdeView();
-            $consulta=$con->prepare("SELECT p.id, p.foto, p.descripcion, u.usuario 
+            $consulta=$con->prepare("SELECT p.id, p.foto, p.descripcion, u.usuario, u.foto as fotoP 
 from publicacion p 
 inner join amistad a 
 on a.amistad = p.usuario
@@ -199,7 +199,6 @@ order by p.fechapublicacion DESC");
     
     public function contarAmigos(){
         try{
-
             $id =$_SESSION['id'];
             $con = $this->conectarDesdeView();
             $consulta = $con->prepare("SELECT a.amistad, u.usuario, u.nombre, u.apellido
@@ -271,6 +270,38 @@ and a.usuario = '$id' ");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
          }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+    }
+    
+    public function sonAmigos($idPersona){
+        //$exito = false;
+        //session_start();
+        $id=$_SESSION['id'];
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("select a.amistad from amistad a inner join usuario u on a.amistad = u.id where a.usuario = '$id' and a.amistad = '$idPersona' and a.estado = 1");
+            $consulta->execute();
+           return $consulta->fetchAll(PDO::FETCH_OBJ); 
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+      //  return $exito;
+    }
+    
+    public function enviarSolicitud($idPersona){
+        $id=$_SESSION['id'];
+        $estado = 0;
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("insert into amistad (usuario,amistad,estado)
+            values(?,?,?)");
+            $consulta->bindParam(1,$id,PDO::PARAM_STR);
+            $consulta->bindParam(2,$idPersona,PDO::PARAM_STR);
+            $consulta->bindParam(3,$estado,PDO::PARAM_STR);
+            $consulta->execute();
+            return $true;
+        }catch(Exception $e){
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
         }
     }
