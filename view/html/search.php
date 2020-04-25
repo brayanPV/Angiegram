@@ -16,9 +16,9 @@
                             <h2><?php echo $r->usuario; ?></h2>
                             <h2><?php echo $r->nombre; ?></h2>
                             <h2><?php echo $r->apellido;?></h2>
-                        </div>
-                        <form method="POST" action="">
+                        </div>                        
                         <div class="col-2 align-self-center">
+                         <form method="POST" action="">
                           <?php 
                             include_once '../../controller/controller.php';
                             $control = new Controller();

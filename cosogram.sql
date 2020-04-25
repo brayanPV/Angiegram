@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-04-2020 a las 04:55:26
+-- Tiempo de generación: 25-04-2020 a las 21:14:48
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Versión de PHP: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -56,8 +55,42 @@ CREATE TABLE `comentario` (
   `publicacion` int(11) DEFAULT NULL COMMENT 'Almacena el identificador de la publicacipon del usuario',
   `usuario` int(11) DEFAULT NULL COMMENT 'Almacena el identificador del usuario que realizó la publicación',
   `fechapublicacion` date DEFAULT NULL COMMENT 'Almacena la fecha de la publicación',
-  `estado` int(11) DEFAULT NULL COMMENT 'Almacena el estado de la publicación, que puede ser desde activo, bloqueado o demas'
+  `estado` int(11) DEFAULT NULL COMMENT 'Almacena el estado de la publicación, que puede ser desde activo, bloqueado o demas',
+  `comentario` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Almacena la información de los comentarios realizados por los usuarios sobre las distintas publicaciones a la base de datos';
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id`, `publicacion`, `usuario`, `fechapublicacion`, `estado`, `comentario`) VALUES
+(1, 17, 3, NULL, NULL, 'prueba'),
+(2, 17, 3, NULL, NULL, 'hola'),
+(3, 17, 3, NULL, NULL, 'hola'),
+(4, 16, 3, NULL, NULL, 'gris xd'),
+(5, 16, 3, NULL, NULL, 'gris xd'),
+(6, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(7, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(8, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(9, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(10, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(11, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(12, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(13, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(14, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(15, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(16, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(17, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(18, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(19, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(20, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(21, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(22, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(23, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(24, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(25, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(26, 16, 3, NULL, NULL, 'hey no se que hacer'),
+(27, 16, 3, NULL, NULL, 'hey no se que hacer');
 
 -- --------------------------------------------------------
 
@@ -215,13 +248,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `amistad`
 --
 ALTER TABLE `amistad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `etiqueta`
