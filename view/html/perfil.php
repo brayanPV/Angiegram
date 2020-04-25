@@ -4,7 +4,7 @@
 
     <div class="container">
         <a href="publicar.php" target="_blank"> PUBLICAR FOTO</a>
-        <a href="feed.php" target="_blank"> FEED</a>
+        <a href="feed.php"> FEED</a>
         <div class="row py-4 align-items-center">
             <div class="col-6 my-4 d-flex justify-content-center">
                 <div class="icon">

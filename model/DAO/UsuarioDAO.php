@@ -262,7 +262,7 @@ and a.usuario = '$id' ");
         $exito=false;
         try{
             $con=$this->conectarDesdeView();
-            $consulta = $con->prepare("SELECT u.usuario, c.comentario
+            $consulta = $con->prepare("SELECT u.usuario, c.comentario, u.foto
             FROM comentario c
             INNER JOIN usuario u
             ON u.id = c.usuario
