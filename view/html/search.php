@@ -27,20 +27,11 @@
                             if($exito==null){
                                 ?>
                             <input type="hidden" name="usuario" value="<?php echo $r->id; ?>">
-                              <button type="button" class="btn btn-primary px-3" name="enviarSolicitud"><i class="fas fa-user-plus" aria-hidden="true" ></i> agregar</button>  <?php
+                              <button type="submit" class="btn btn-primary px-3" name="enviarSolicitud"><i class="fas fa-user-plus" aria-hidden="true" ></i> agregar</button>  <?php
                             }
                             ?>
                         </form>
-                           <?php
-                            if(isset($_POST["usuario"])){
-                //require_once('../../controller/Controller.php');
-                            $id=$_POST['usuario'];
-                            echo "tengo un usuario";
-                            $res = $control->enviarSolicitudController($id);
-                            echo $res;
-                }
-                            
-                            ?>
+                           
                            <form action="perfilBuscado.php" method="POST">
                                 <input type="hidden" name="usuario" value="<?php echo $r->id; ?>">
                                 <button class="btn btn-info btn-block" type="submit">Ver Perfil</button>
@@ -55,7 +46,16 @@
 
             <?php endforeach; ?>
 
-
+<?php
+                            if(isset($_POST["enviarSolicitud"])){
+                //require_once('../../controller/Controller.php');
+                            $idUsuario=$_POST['usuario'];
+                            echo "tengo un usuario";
+                            $res = $control->enviarSolicitudController($idUsuario);
+                            echo $res;
+                }
+                            
+                            ?>
         </div>
 
 

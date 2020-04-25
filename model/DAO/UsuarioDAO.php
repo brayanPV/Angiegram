@@ -280,7 +280,7 @@ and a.usuario = '$id' ");
         $id=$_SESSION['id'];
         try{
             $con=$this->conectarDesdeView();
-            $consulta=$con->prepare("select a.amistad from amistad a inner join usuario u on a.amistad = u.id where a.usuario = '$id' and a.amistad = '$idPersona' and a.estado = 1");
+            $consulta=$con->prepare("select a.amistad from amistad a inner join usuario u on a.amistad = u.id where a.usuario = '$id' and a.amistad = '$idPersona'");
             $consulta->execute();
            return $consulta->fetchAll(PDO::FETCH_OBJ); 
         }catch(Exception $e){
@@ -294,13 +294,12 @@ and a.usuario = '$id' ");
         $estado = 0;
         try{
             $con=$this->conectarDesdeView();
-            $consulta=$con->prepare("insert into amistad (usuario,amistad,estado)
-            values(?,?,?)");
+            $consulta=$con->prepare("INSERT INTO amistad (usuario,amistad,estado)
+            VALUES (?,?,?)");
             $consulta->bindParam(1,$id,PDO::PARAM_STR);
             $consulta->bindParam(2,$idPersona,PDO::PARAM_STR);
             $consulta->bindParam(3,$estado,PDO::PARAM_STR);
-            $consulta->execute();
-            return $true;
+            return $consulta->execute();
         }catch(Exception $e){
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
         }

@@ -178,7 +178,7 @@ class Controller{
         $negocio=new Negocio();
         $res=$negocio->enviarSolicitudNegocio($idPersona);
         var_dump($res);
-        if($res==true){
+        if($res!=null){
             header('location: search.php');
         }else{
             echo "error";
