@@ -182,7 +182,7 @@ class UsuarioDAO{
         try{
             $id = $_SESSION['id'];
             $con = $this->conectarDesdeView();
-            $consulta=$con->prepare("SELECT p.id, p.foto, p.descripcion, u.usuario 
+            $consulta=$con->prepare("SELECT p.id, p.foto, p.descripcion, u.usuario, u.foto as fotoP 
 from publicacion p 
 inner join amistad a 
 on a.amistad = p.usuario
