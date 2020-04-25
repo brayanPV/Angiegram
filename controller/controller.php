@@ -184,6 +184,18 @@ class Controller{
             echo "error";
         }
     }
+    public function aceptarSolicitudController($solicitante){
+        include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->aceptarSolicitudNegocio($solicitante);
+        return $res;
+    }
+    public function mostrarSolicitdController(){
+       include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->mostrarSolicitudNegocio();
+        return $res; 
+    }
 }
 
 ?>

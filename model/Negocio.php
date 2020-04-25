@@ -67,6 +67,14 @@ class Negocio{
         $res=$this->user->enviarSolicitud($idPersona);
         return $res;
     }
+    public function aceptarSolicitudNegocio($solicitante){
+        $res=$this->user->aceptarSolicitud();
+        return $res;
+    }
+    public function mostrarSolicitudNegocio(){
+        $res=$this->user->mostrarSolicitud();
+        return $res;
+    }
 
 }
 
