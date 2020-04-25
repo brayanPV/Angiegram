@@ -63,6 +63,10 @@ class Negocio{
         $res=$this->user->sonAmigos($idPersona);
         return $res;
     }
+    public function enviarSolicitudNegocio($idPersona){
+        $res=$this->user->enviarSolicitud($idPersona);
+        return $res;
+    }
 
 }
 

@@ -117,7 +117,7 @@ class UsuarioDAO{
             $consulta->bindParam(1,$descripcion,PDO::PARAM_STR);
             $consulta->bindParam(2,$_SESSION['id'],PDO::PARAM_STR);
             $consulta->bindParam(3,$foto,PDO::PARAM_STR);
-           $exito = $consulta->execute();
+            $exito = $consulta->execute();
         }catch(Exception $e){
         throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());    
         }
@@ -280,13 +280,30 @@ and a.usuario = '$id' ");
         $id=$_SESSION['id'];
         try{
             $con=$this->conectarDesdeView();
-            $consulta=$con->prepare("select a.amistad from amistad a inner join usuario u on a.amistad = u.id where a.usuario = '$id' and a.amistad = '$idPersona'");
+            $consulta=$con->prepare("select a.amistad from amistad a inner join usuario u on a.amistad = u.id where a.usuario = '$id' and a.amistad = '$idPersona' and a.estado = 1");
             $consulta->execute();
            return $consulta->fetchAll(PDO::FETCH_OBJ); 
         }catch(Exception $e){
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
         }
       //  return $exito;
+    }
+    
+    public function enviarSolicitud($idPersona){
+        $id=$_SESSION['id'];
+        $estado = 0;
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("insert into amistad (usuario,amistad,estado)
+            values(?,?,?)");
+            $consulta->bindParam(1,$id,PDO::PARAM_STR);
+            $consulta->bindParam(2,$idPersona,PDO::PARAM_STR);
+            $consulta->bindParam(3,$estado,PDO::PARAM_STR);
+            $consulta->execute();
+            return $true;
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
     }
     
 }
