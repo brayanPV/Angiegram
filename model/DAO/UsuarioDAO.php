@@ -389,11 +389,12 @@ and a.usuario = '$id' ");
         $id=$_SESSION['id'];
         try{
             $con=$this->conectarDesdeView();
-            $consulta=$con->prepare("SELECT u.usuario, u.foto
-            from usuario u
-            inner join mensaje m
-            on u.id=m.recibe
-            and u.id = '$id'");
+            $consulta=$con->prepare("select u.id, u.foto, m.mensaje, u.usuario
+from usuario u
+inner join mensaje m 
+on u.id=m.envia 
+and m.recibe= '$id'
+GROUP by u.id");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ); 
          }catch(Exception $e){
