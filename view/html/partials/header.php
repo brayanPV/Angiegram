@@ -54,9 +54,10 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="perfil.php">Perfil</a>
                             <a class="dropdown-item" href="misamigos.php">Amigos</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="editarperfil.php">Configuración</a>
-                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="inbox.php">Inbox</a>
+                            <a class="dropdown-item" href="solicitudes.php">solicitudes</a>
+                            <a class="dropdown-item" href="sendemessage.php">enviar mensaje</a>
+                            
                             <a class="dropdown-item" href="../../index.php">Cerrar Sesión</a>
                         </div>
                     </div>

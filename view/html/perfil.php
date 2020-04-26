@@ -13,7 +13,7 @@
                     <ul class="menu">
 
                         <li class="spread">
-                            <a class="unit" href="#"><i class="far fa-thumbs-up"></i></a>
+                            <a class="unit" href="solicitudes.php" title="ver solicitudes"><i class="fas fa-user-plus"></i></a>
                         </li>
 
                         <li class="spread">
