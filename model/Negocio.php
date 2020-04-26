@@ -68,7 +68,7 @@ class Negocio{
         return $res;
     }
     public function aceptarSolicitudNegocio($solicitante){
-        $res=$this->user->aceptarSolicitud();
+        $res=$this->user->aceptarSolicitud($solicitante);
         return $res;
     }
     public function mostrarSolicitudNegocio(){
