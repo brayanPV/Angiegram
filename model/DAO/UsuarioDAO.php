@@ -294,7 +294,6 @@ and a.usuario = '$id' ");
         }
       //  return $exito;
     }
-    
     public function enviarSolicitud($idPersona){
         $id=$_SESSION['id'];
         $estado = 0;
@@ -310,7 +309,6 @@ and a.usuario = '$id' ");
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
         }
     }
-    
     public function mostrarSolicitud(){
         $id=$_SESSION['id'];
         $estado = 0;
@@ -328,7 +326,6 @@ and a.usuario = '$id' ");
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString());
         }
     }
-    
     public function aceptarSolicitud($solicitante){
         $id=$_SESSION['id'];
         try{
@@ -342,7 +339,67 @@ and a.usuario = '$id' ");
             throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
         }
     }
-    
+    public function enviarMensaje($idReceptor, $mensaje){
+        $idEmisor=$_SESSION['id'];
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("INSERT INTO mensaje (envia, recibe, mensaje)
+            values(?,?,?)");
+            $consulta->bindParam(1,$idEmisor,PDO::PARAM_STR);
+            $consulta->bindParam(2,$idReceptor,PDO::PARAM_STR);
+            $consulta->bindParam(3,$mensaje,PDO::PARAM_STR);
+            return $consulta->execute();
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+    }
+    public function mostrarMensajeAmigos($idAmigo){
+        $id=$_SESSION['id'];
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("SELECT u.id, m.mensaje
+            from usuario u
+            inner join mensaje m
+            on u.id=m.envia
+            and m.recibe = '$id'
+            and m.envia = '$idAmigo'");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ); 
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+    }
+    public function mostrarMensajeMios($idAmigo){
+        $id=$_SESSION['id'];
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("SELECT u.id, m.mensaje
+            from usuario u
+            inner join mensaje m
+            on u.id=m.envia
+            and m.recibe = '$idAmigo'
+            and m.envia = '$id'");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ); 
+        }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+    }
+    public function mostrarBandejaEntrada(){
+        $id=$_SESSION['id'];
+        try{
+            $con=$this->conectarDesdeView();
+            $consulta=$con->prepare("SELECT u.usuario, u.foto
+            from usuario u
+            inner join mensaje m
+            on u.id=m.recibe
+            and u.id = '$id'");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ); 
+         }catch(Exception $e){
+            throw new Exception("Ha ocurrido un error " . $e->getTraceAsString()); 
+        }
+    }
 }
 
 ?>

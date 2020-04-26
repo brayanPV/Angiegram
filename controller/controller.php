@@ -196,6 +196,30 @@ class Controller{
         $res=$negocio->mostrarSolicitudNegocio();
         return $res; 
     }
+    public function enviarMensajeController($idReceptor, $mensaje){
+       include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->enviarMensajeNegocio($idReceptor, $mensaje);
+        return $res; 
+    }
+    public function mostrarMensajeAmigosController($idAmigo){
+        include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->mostrarMensajeAmigosNegocio($idAmigo);
+        return $res; 
+    }
+    public function mostrarMensajeMiosController($idAmigo){
+        include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->mostrarMensajeMiosNegocio($idAmigo);
+        return $res; 
+    }
+    public function mostrarBanejaEntradaController(){
+        include_once '../../model/Negocio.php';
+        $negocio=new Negocio();
+        $res=$negocio->mostrarBanejaEntradaNegocio();
+        return $res; 
+    }
 }
 
 ?>

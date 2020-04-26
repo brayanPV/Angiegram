@@ -75,6 +75,22 @@ class Negocio{
         $res=$this->user->mostrarSolicitud();
         return $res;
     }
+    public function enviarMensajeNegocio($idReceptor, $mensaje){
+        $res=$this->user->enviarMensaje($idReceptor, $mensaje);
+        return $res;
+    }
+    public function mostrarMensajeAmigosNegocio($idAmigo){
+        $res=$this->user->mostrarMensajeAmigos($idAmigo);
+        return $res;
+    }
+    public function mostrarMensajeMiosNegocio($idAmigo){
+        $res=$this->user->mostrarMensajeMios($idAmigo);
+        return $res;
+    }
+    public function mostrarBanejaEntradaNegocio(){
+        $res=$this->user->mostrarBandejaEntrada();
+        return $res;
+    }
 
 }
 
