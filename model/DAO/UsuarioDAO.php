@@ -126,7 +126,7 @@ class UsuarioDAO{
     
     public function buscarPersonas($usuario){
         //$exito=false;
-        session_start();
+        //session_start();
         $_SESSION['buscar'] = $usuario;
         $id=$_SESSION['id'];
         try{
@@ -207,10 +207,11 @@ order by p.fechapublicacion DESC");
         try{
             $id =$_SESSION['id'];
             $con = $this->conectarDesdeView();
-            $consulta = $con->prepare("SELECT a.amistad, u.usuario, u.nombre, u.apellido
+            $consulta = $con->prepare("SELECT a.amistad, u.usuario, u.nombre, u.apellido, u.foto, u.id
 from amistad a
 inner join usuario u
 on a.amistad= u.id
+and a.estado = 1
 and a.usuario = '$id' ");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);

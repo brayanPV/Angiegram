@@ -20,7 +20,7 @@
                 <div class="col-10">
 
                     <input type="hidden" name="id" value="<?php echo $r->id; ?>">
-                    
+
                     <h3 class="font-weight-bold"><?php echo $r->usuario ;?></h3>
 
                 </div>
@@ -30,9 +30,10 @@
                 </div>
                 <img src="../imagenes/<?php echo $r->foto ;?>" alt="" class="img-fluid mt-1" width="100%">
                 <hr>
-                <h4><?php $comentario = $control->mostrarComentarioController($r->id); ?> </h4> <br>
-                <h2 class="p-2">Comentarios</h2>
+                <h4 hidden><?php $comentario = $control->mostrarComentarioController($r->id); ?> </h4> <br>
                 
+                <h2 class="p-2" >Comentarios</h2>
+
                 <?php
                                        if($comentario!=null){
                                            foreach($comentario as $c):?>
@@ -41,7 +42,7 @@
 
                     <div class="row">
                         <div class="col-2 p-2">
-                           <img src="../imagenes/<?php echo $c->foto;?>" alt="img-fluid rounded-circle" width="100%">
+                            <img src="../imagenes/<?php echo $c->foto;?>" alt="img-fluid rounded-circle" width="100%">
                             <h5><?php echo $c->usuario; ?></h5>
                         </div>
 
@@ -70,7 +71,7 @@
                             </div>
                             <div class="col-3">
                                 <input type="hidden" name="id" value="<?php echo $r->id; ?>">
-                                <button type="submit" class="btn btn-primary mb-2" name="botonComentario">Comentar</button>
+                                <button type="submit" class="btn btn-primary mb-2" name="botonComentario" >Comentar</button>
                             </div>
                         </div>
 
@@ -90,7 +91,8 @@
                 $comentario=$_POST["comentario"];
                 //$send = new Controller();
                 $res = $control->realizarComentarioController($id,$comentario);
-                $comentario=null;    
+                $comentario=null;
+                    echo "<meta http-equiv='refresh' content='0'>";
                 }
                 ?>
 
