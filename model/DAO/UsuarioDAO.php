@@ -395,7 +395,8 @@ from usuario u
 inner join mensaje m 
 on u.id=m.envia 
 and m.recibe= '$id'
-GROUP by u.id");
+GROUP by u.id
+order by m.fechamensaje asc");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ); 
          }catch(Exception $e){

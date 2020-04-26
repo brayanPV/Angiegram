@@ -21,7 +21,7 @@
                         </li>
 
                         <li class="spread">
-                            <a class="unit" href="#"><i class="fas fa-ban"></i></a>
+                            <a class="unit" href="inbox.php"><i class="far fa-envelope"></i></a>
                         </li>
 
                         <li class="spread">
