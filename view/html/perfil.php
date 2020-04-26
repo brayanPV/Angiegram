@@ -17,11 +17,11 @@
                         </li>
 
                         <li class="spread">
-                            <a class="unit" href="sendemessage.php"><i class="fas fa-location-arrow"></i></a>
+                            <a class="unit" href="sendemessage.php" title="Enviar Mensaje"><i class="fas fa-location-arrow"></i></a>
                         </li>
 
                         <li class="spread">
-                            <a class="unit" href="inbox.php"><i class="far fa-envelope"></i></a>
+                            <a class="unit" href="inbox.php" title="Inbox"><i class="far fa-envelope"></i></a>
                         </li>
 
                         <li class="spread">
