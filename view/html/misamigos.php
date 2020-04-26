@@ -15,7 +15,7 @@
                 <div class="col-10 my-2">
                     <div class="row border border-light">
                         <div class="col-3">
-                            <img src="../imagenes/prueba.png" alt="" class="img-fluid rounded-circle">
+                            <img src="../imagenes/<?php echo $r->foto; ?>" alt="" class="img-fluid rounded-circle">
                         </div>
                         <div class="col-7 align-self-center">
                             <h2><?php echo $r->usuario; ?></h2>
@@ -23,7 +23,7 @@
                             <h2><?php echo $r->apellido;?></h2>
                         </div>
                         <div class="col-2 align-self-center">
-                            <button type="button" class="btn btn-primary px-3"><i class="fas fa-user-plus" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-primary px-3" hidden><i class="fas fa-user-plus" aria-hidden="true"></i></button>
 
                             <form action="perfilBuscado.php" method="POST">
                                 <input type="hidden" name="usuario" value="<?php echo $r->amistad; ?>">

@@ -3,6 +3,7 @@
         <div class="container">
             <?php //session_start();
    // var_dump($_SESSION['busqueda']);
+    if($_SESSION['busqueda']!=null){
                 foreach($_SESSION['busqueda'] as $r): ?>
 
             <div class="row justify-content-center wow fadeInUp ">
@@ -44,7 +45,9 @@
 
             </div>
 
-            <?php endforeach; ?>
+            <?php endforeach; }else echo "<p>no hay resultados<p> <br> F ";
+           
+            ?>
 
 <?php
                             if(isset($_POST["enviarSolicitud"])){

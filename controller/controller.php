@@ -73,7 +73,11 @@ class Controller{
             session_start();
             $_SESSION['busqueda'] = $res;
             header('location: search.php');
+            
+        }else{
+             $_SESSION['busqueda'] = null;
         }
+        
     }
     
     public function mostrarPerfilBuscadoController($usuario){
