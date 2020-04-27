@@ -12,6 +12,9 @@ social network written in PHP <br>
 ### Arquitectura:
 - MVC
 
+### Video Funcionalidad:
+[Video ](https://youtu.be/_td-M42C3CM)
+
 Para ejecutar el proyecto se necesita alojar en el directorio de xampp `C:\xampp\htdocs` en el caso de wamp `c:\wamp\www`, luego encender apache y mysql, en mysql crear una bd con nombre
 `cosogram` y luego importar el sql de la bd, finalmente ir a la url del server `localhost/Angiegram/` <br>
 ### Referencias:
